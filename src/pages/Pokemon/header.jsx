@@ -1,4 +1,6 @@
 import { useMemo } from "react";
+import { BsSearch } from "react-icons/bs";
+import { TbHeartBolt } from "react-icons/tb";
 
 import TextField from "../../components/textfield";
 import { getMinPower, getMaxPower } from "../../utils/powerMinMax";
@@ -14,6 +16,7 @@ const Header = ({ query, setQuery, powerThreshold, setPowerThreshold, currentDat
                     <TextField
                         value={query}
                         id='search-query'
+                        Icon={<BsSearch />}
                         placeholder='Search...'
                         onChange={(e) => setQuery(e.target.value)}
                     />
@@ -23,6 +26,7 @@ const Header = ({ query, setQuery, powerThreshold, setPowerThreshold, currentDat
                         type='number'
                         id='search-power'
                         value={powerThreshold}
+                        Icon={<TbHeartBolt />}
                         placeholder='Power threshold'
                         onChange={(e) => setPowerThreshold(e.target.valueAsNumber)}
                     />
