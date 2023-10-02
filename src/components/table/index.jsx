@@ -13,16 +13,29 @@ const Table = ({ head, loading, RowElement, paginationOptions }) => {
                 <table className='w-full text-sm text-left text-gray-500'>
                     <TableHead head={head} />
                     <tbody>
-                        {paginationOptions.currentData.map((row, index) => (
-                            <RowElement {...row} key={index} />
-                        ))}
+                        {paginationOptions.currentData.length ? (
+                            paginationOptions.currentData.map((row, index) => (
+                                <RowElement {...row} key={index} />
+                            ))
+                        ) : (
+                            <></>
+                        )}
                     </tbody>
                 </table>
+
+                {/* In case no data was found */}
+                {!paginationOptions.currentData.length && <NoData />}
             </div>
             <Pagination options={paginationOptions} />
         </div>
     );
 };
+
+const NoData = () => (
+    <div className='flex justify-center py-10'>
+        <h1 className='text-xl font-semibold text-gray-500'>No data was found</h1>
+    </div>
+);
 
 Table.propTypes = {
     data: PropTypes.array,
